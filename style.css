@@ -1,0 +1,71 @@
+.users-icon-container ion-icon {
+    font-size: 42px;
+}
+
+.icon-container ion-icon {
+    font-size: 26px;
+}
+
+.chat-type-container {
+    background-color: #FFF;
+    box-shadow: 0px -4px 6px 0px #0000000D;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px 25px;
+}
+
+.input-container input {
+    font-size: 18px;
+    color: #000;
+    font-style: italic;
+    font-weight: 400;
+    border: none;
+    outline: none;
+}
+
+input::placeholder {
+    font-size: 18px;
+    color: #000;
+    font-style: italic;
+    font-weight: 400;
+}
+
+.chat-container {
+    width: 100%;
+    height: 100vh;
+    padding: 25px 0px;
+    overflow-y: scroll;
+}
+
+.in-out-room-message {
+    background-color: #DCDCDC;
+}
+
+.normal-message {
+    background-color: #FFF;
+}
+
+.private-message {
+    background-color: #FFDEDE;
+}
+
+.in-out-room-message,
+.normal-message,
+.private-message  {
+    padding: 15px 10px;
+    margin: 5px 0px;
+}
+
+.message {
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.hour {
+    color: #AAAAAA;
+
+}

@@ -2,14 +2,99 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/globals.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <title>UOL Chat</title>
 </head>
 <body>
-    
+    <!-- Header -->
+    <header>
+        <!-- Logo Container -->
+        <div class="logo-container">
+            <img src="./assets/imgs/logo 1.png" alt="Logo">
+        </div>
+        <!-- Logo Container End -->
+
+        <!-- Users Icon Container -->
+        <div class="users-icon-container">
+            <ion-icon name="people"></ion-icon>
+        </div>
+        <!-- Users Icon Container End -->
+    </header>
+    <!-- Header End -->
+
+    <!-- Chat Container -->
+    <div class="chat-container">
+        <div class="in-out-room-message">
+            <span class="message">
+                <span class="hour">
+                    (09:21:45)
+                </span>
+                <strong class="name">
+                    João
+                </strong>
+                entra na sala...
+            </span>
+        </div>
+        <div class="normal-message">
+            <span class="message">
+                <span class="hour">
+                    (09:21:45)
+                </span>
+                <strong class="name">
+                    João
+                </strong>
+               para
+               <strong class="name">
+                    Todos:
+                </strong>
+
+                Bom dia
+            </span>
+        </div>
+        <div class="private-message">
+            <span class="message">
+                <span class="hour">
+                    (09:21:45)
+                </span>
+                <strong class="name">
+                    João
+                </strong>
+               reservadamente para
+               <strong class="name">
+                    Maria:
+                </strong>
+                Oi gatinha quer tc?
+            </span>
+        </div>
+    </div>
+    <!-- Chat Container End -->
+
+
+    <!-- Chat Type Container -->
+    <div class="chat-type-container">
+        <!-- Input Container -->
+        <div class="input-container">
+            <input type="text" name="chat" placeholder="Escreva aqui...">
+        </div>
+        <!-- Input Container End-->
+        
+        <!-- Icon Container -->
+        <div class="icon-container">
+            <ion-icon name="paper-plane-outline"></ion-icon>
+        </div>
+        <!-- Icon Container End -->
+    </div>
+    <!-- Chat Type Container End -->
+
+
     <script src="./script.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
