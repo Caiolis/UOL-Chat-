@@ -120,13 +120,13 @@ function sendMessage() {
 
   const promisse = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', messageObject);
   promisse.then(response => {
-    if(response.status == 200) {
-      chat.innerHTML = ''
-      typeField.value = ''
-      getMessages()
-    } else {
-      window.location.reload()
-    }
+    chat.innerHTML = ''
+    typeField.value = ''
+    getMessages()
+  })
+  promisse.catch(response => {
+    typeField.value = ''
+    window.location.reload()
   })
 }
 
