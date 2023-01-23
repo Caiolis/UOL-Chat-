@@ -2,6 +2,7 @@
 const userName = prompt("Enter your name");
 const chat = document.querySelector(".chat-container");
 const typeField = document.getElementById("type-field");
+const message = document.getElementsByClassName('message-container')
 const nameObject = { name: userName };
 
 // Log in the room
@@ -16,10 +17,10 @@ function logIn() {
 // Verify if the name the user select is already in use if so, runs logIn function again
 function checkName(resposta) {
   if (resposta.status == 400) {
-    alert("This Name is already in use, please use another one!");
-    logIn();
-  } else {
-    return resposta;
+    while(resposta.status == 400) {
+      alert("This Name is already in use, please use another one!");
+      userName = prompt("Enter your name");
+    }
   }
 }
 
@@ -43,7 +44,7 @@ function getMessages() {
       // Checks if the status of the message and appends to the chat container
       if (response[i].type == "status") {
         chat.innerHTML += `
-                <div class="in-out-room-message">
+                <div class="in-out-room-message message-container">
                     <span class="message">
                         <span class="hour">
                             ${response[i].time}
@@ -57,7 +58,7 @@ function getMessages() {
             `;
       } else if (response[i].type == "message") {
         chat.innerHTML += `
-                <div class="normal-message">
+                <div class="normal-message message-container">
                     <span class="message">
                         <span class="hour">
                         ${response[i].time}
@@ -76,7 +77,7 @@ function getMessages() {
                 `;
       } else {
         chat.innerHTML += `
-                    <div class="private-message">
+                    <div class="private-message message-container">
                         <span class="message">
                             <span class="hour">
                                 ${response[i].time}
@@ -94,7 +95,18 @@ function getMessages() {
                 `;
       }
     }
+    message[99].scrollIntoView();
   });
+
+}
+
+// Updates the chat by running this function every 3 seconds 
+function updateChat() {
+  setInterval(() => {
+    chat.innerHTML = ''
+    getMessages()
+    
+  }, 3000)
 }
 
 // Get the message written by the user and sends to the server
@@ -121,3 +133,4 @@ function sendMessage() {
 logIn();
 getMessages();
 mantainConnection();
+updateChat();

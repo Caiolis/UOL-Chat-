@@ -16,7 +16,6 @@
     justify-content: space-between;
     width: 100%;
     padding: 20px 25px;
-    
 }
 
 .input-container input {
@@ -39,8 +38,9 @@ input::placeholder {
     width: 100%;
     padding: 25px 0px;
     overflow-y: scroll;
-    margin-bottom: 50px;
+    margin: 70px 0px 50px 0px;
 }
+
 
 .in-out-room-message {
     background-color: #DCDCDC;
