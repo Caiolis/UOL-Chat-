@@ -44,7 +44,7 @@ function getMessages() {
       // Checks if the status of the message and appends to the chat container
       if (response[i].type == "status") {
         chat.innerHTML += `
-                <div class="in-out-room-message message-container">
+                <div class="in-out-room-message message-container data-test="message"">
                     <span class="message">
                         <span class="hour">
                             ${response[i].time}
@@ -58,7 +58,7 @@ function getMessages() {
             `;
       } else if (response[i].type == "message") {
         chat.innerHTML += `
-                <div class="normal-message message-container">
+                <div class="normal-message message-container data-test="message"">
                     <span class="message">
                         <span class="hour">
                         ${response[i].time}
@@ -77,7 +77,7 @@ function getMessages() {
                 `;
       } else {
         chat.innerHTML += `
-                    <div class="private-message message-container">
+                    <div class="private-message message-container data-test="message"">
                         <span class="message">
                             <span class="hour">
                                 ${response[i].time}
@@ -122,6 +122,7 @@ function sendMessage() {
   promisse.then(response => {
     if(response.status == 200) {
       chat.innerHTML = ''
+      typeField.value = ''
       getMessages()
     } else {
       window.location.reload()

@@ -38,13 +38,13 @@
     <div class="chat-type-container">
         <!-- Input Container -->
         <div class="input-container">
-            <input type="text" name="chat" placeholder="Escreva aqui..." id="type-field">
+            <input type="text" name="chat" placeholder="Escreva aqui..." id="type-field" data-test="input-message">
         </div>
         <!-- Input Container End-->
         
         <!-- Icon Container -->
         <div class="icon-container">
-            <ion-icon name="paper-plane-outline" onclick="sendMessage()"></ion-icon>
+            <ion-icon name="paper-plane-outline" onclick="sendMessage()" data-test="send-message"></ion-icon>
         </div>
         <!-- Icon Container End -->
     </div>
