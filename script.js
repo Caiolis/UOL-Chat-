@@ -1,5 +1,5 @@
 // Global Variables
-const userName = prompt("Enter your name");
+let userName = prompt("Enter your name");
 const chat = document.querySelector(".chat-container");
 const typeField = document.getElementById("type-field");
 const message = document.getElementsByClassName('message-container')
@@ -11,9 +11,13 @@ function logIn() {
     "https://mock-api.driven.com.br/api/v6/uol/participants",
     nameObject
   );
-  promisse.then(getMessages);
+  promisse.then(() => {
+    mantainConnection();
+    getMessages();
+  });
   promisse.catch(() => {
     alert("This Name is already in use, please use another one!");
+    userName = prompt("Enter your name");
     logIn();
   })
 }
@@ -126,5 +130,4 @@ function sendMessage() {
 
 // Functions Running
 logIn();
-mantainConnection();
 updateChat();
