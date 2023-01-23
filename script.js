@@ -1,5 +1,7 @@
+// Global Variables
 const userName = prompt("Enter your name");
 const chat = document.querySelector(".chat-container");
+const typeField = document.getElementById("type-field");
 const nameObject = { name: userName };
 
 // Log in the room
@@ -32,7 +34,7 @@ function mantainConnection() {
   });
 }
 
-// Get messages of the room
+// Get messages of the room and reloads it every 3 seconds
 function getMessages() {
   const data = axios.get("https://mock-api.driven.com.br/api/v6/uol/messages");
   data.then((response) => {
@@ -93,6 +95,26 @@ function getMessages() {
       }
     }
   });
+}
+
+// Get the message written by the user and sends to the server
+function sendMessage() {
+  const messageObject = {
+    from: userName,
+    to: 'Todos',
+    text: typeField.value,
+    type: 'message'
+  };
+
+  const promisse = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', messageObject);
+  promisse.then(response => {
+    if(response.status == 200) {
+      chat.innerHTML = ''
+      getMessages()
+    } else {
+      window.location.reload()
+    }
+  })
 }
 
 // Functions Running
