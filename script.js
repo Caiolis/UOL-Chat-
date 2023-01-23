@@ -2,7 +2,7 @@
 let userName = prompt("Enter your name");
 const chat = document.querySelector(".chat-container");
 const typeField = document.getElementById("type-field");
-const message = document.getElementsByClassName('message-container')
+const message = document.getElementsByClassName("message-container");
 const nameObject = { name: userName };
 
 // Log in the room
@@ -16,10 +16,12 @@ function logIn() {
     getMessages();
   });
   promisse.catch(() => {
-    alert("This Name is already in use, please use another one!");
-    userName = prompt("Enter your name");
-    logIn();
-  })
+    while (userName == null || userName == "") {
+      alert("This Name is already in use, please use another one!");
+      userName = prompt("Enter your name");
+      logIn();
+    }
+  });
 }
 
 // Keep the user in the room, this function runs itself every 5 seconds
@@ -68,7 +70,6 @@ function getMessages() {
                     <strong class="name">
                             ${response[i].to}
                         </strong>
-
                         ${response[i].text}
                     </span>
                 </div>
@@ -95,37 +96,38 @@ function getMessages() {
     }
     message[99].scrollIntoView();
   });
-
 }
 
-// Updates the chat by running this function every 3 seconds 
+// Updates the chat by running this function every 3 seconds
 function updateChat() {
   setInterval(() => {
-    chat.innerHTML = ''
-    getMessages()
-    
-  }, 3000)
+    chat.innerHTML = "";
+    getMessages();
+  }, 3000);
 }
 
 // Get the message written by the user and sends to the server
 function sendMessage() {
   const messageObject = {
     from: userName,
-    to: 'Todos',
+    to: "Todos",
     text: typeField.value,
-    type: 'message'
+    type: "message",
   };
 
-  const promisse = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', messageObject);
-  promisse.then(response => {
-    chat.innerHTML = ''
-    typeField.value = ''
-    getMessages()
-  })
-  promisse.catch(response => {
-    typeField.value = ''
-    window.location.reload()
-  })
+  const promisse = axios.post(
+    "https://mock-api.driven.com.br/api/v6/uol/messages",
+    messageObject
+  );
+  promisse.then((response) => {
+    chat.innerHTML = "";
+    typeField.value = "";
+    getMessages();
+  });
+  promisse.catch((response) => {
+    typeField.value = "";
+    window.location.reload();
+  });
 }
 
 // Functions Running
