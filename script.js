@@ -11,17 +11,11 @@ function logIn() {
     "https://mock-api.driven.com.br/api/v6/uol/participants",
     nameObject
   );
-  promisse.then(checkName);
-}
-
-// Verify if the name the user select is already in use if so, runs logIn function again
-function checkName(resposta) {
-  if (resposta.status == 400) {
-    while(resposta.status == 400) {
-      alert("This Name is already in use, please use another one!");
-      userName = prompt("Enter your name");
-    }
-  }
+  promisse.then(getMessages);
+  promisse.catch(() => {
+    alert("This Name is already in use, please use another one!");
+    logIn();
+  })
 }
 
 // Keep the user in the room, this function runs itself every 5 seconds
@@ -132,6 +126,5 @@ function sendMessage() {
 
 // Functions Running
 logIn();
-getMessages();
 mantainConnection();
 updateChat();
